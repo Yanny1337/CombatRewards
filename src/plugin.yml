@@ -1,0 +1,13 @@
+main: net.yanny1337.CombatRewards
+name: CombatRewards
+version: '4.0.8'
+api-version: '1.16'
+description: Reward or punishment for pvpkill, hostile mobkill, and player death.
+load: POSTWORLD
+author: Yanny1337
+prefix: CombatRewards
+depend:
+- Vault
+- Essentials
+loadbefore:
+- Essentials
