@@ -57,11 +57,13 @@ public class PlayerDeathHandler implements Listener {
 		final BigDecimal punishCost = new BigDecimal(costRegular);
 		final BigDecimal punishReduced = new BigDecimal(costReduced);
 
-		final EntityType killer = d.getEntity().getKiller().getType();
-		if (fileConfig.getBoolean("PVP-DeathCostOnlyForPVP") && killer != EntityType.PLAYER) {
-			costRegular = 0;
-			costReduced = 0;
-			return;
+		if (d.getEntity() == null || d.getEntity().getKiller() == null || d.getEntity().getKiller().getType() == null) {
+			// if (d.getEntity().getKiller().getType() != EntityType.PLAYER) {
+			if (fileConfig.getBoolean("PVP-DeathCostOnlyInPVP")) {
+				costRegular = 0;
+				costReduced = 0;
+				return;
+			}
 		}
 		if (rew != null && chrName != null) {
 			if (d.getEntity().getType() != EntityType.PLAYER) {

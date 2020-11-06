@@ -34,10 +34,10 @@ public class CombatRewards extends JavaPlugin {
 	FileConfiguration config = getConfig();
 
 	public void onEnable() {
-        try {
-        	this.saveDefaultConfig();
-        } catch (Exception e) {
-        	this.getLogger().info("[CombatRewards] Invalid configuration, please reset/remove the configuration file!");
+		try {
+			this.saveDefaultConfig();
+		} catch (Exception e) {
+			this.getLogger().info("[CombatRewards] Invalid configuration, please reset/remove the configuration file!");
 			e.printStackTrace();
 		}
 		try {
@@ -50,11 +50,11 @@ public class CombatRewards extends JavaPlugin {
 		}
 		this.getLogger().info("[CombatRewards] CombatRewards are now active on the server.");
 	}
-	
-	public void onDisable(){
+
+	public void onDisable() {
 		this.getLogger().info("[CombatRewards] CombatRewards have been de-activated from the server!");
 	}
-	
+
 	public boolean sendConsole(String message) {
 		try {
 			final ConsoleCommandSender cs = getServer().getConsoleSender();

@@ -258,7 +258,8 @@ public class KillEntityHandler implements Listener {
 								}
 							}
 							BigDecimal chrBal = null;
-							//@DEBUG: System.out.println("Killworth: \"" + killWorth + "\" (&& killable: \"" + killable + "\")");
+							// @DEBUG: System.out.println("Killworth: \"" + killWorth + "\" (&& killable:
+							// \"" + killable + "\")");
 							if (killable && killWorth > 0) {
 								try {
 									UUID killeruuid = killer.getUniqueId();
@@ -271,14 +272,11 @@ public class KillEntityHandler implements Listener {
 								}
 								boolean dropHead = false;
 								final BigDecimal ecoMax = new BigDecimal("9999999999999");
-								int arr[] = {//@INFO: Vault's 9999999999999 max bal value minus our most expensive killWorth case, so we don't exceed the bounds
-										fileConfig.getInt("PVE-RewardTier01"), fileConfig.getInt("PVE-RewardTier02"), fileConfig.getInt("PVE-RewardTier03"), 
-										fileConfig.getInt("PVE-RewardTier04"), fileConfig.getInt("PVE-RewardTier05"), fileConfig.getInt("PVE-RewardTier06"),
-										fileConfig.getInt("PVE-RewardTier07"), fileConfig.getInt("PVE-RewardTier08"), fileConfig.getInt("PVE-RewardTier09"),
-										fileConfig.getInt("PVE-RewardTier10"), fileConfig.getInt("PVE-RewardTier11"), fileConfig.getInt("PVE-RewardTier12"),
-										fileConfig.getInt("PVP-Reward")
-								};
-						        int max = Arrays.stream(arr).max().getAsInt(); 
+								int arr[] = { // @INFO: Vault's 9999999999999 max bal value minus our most expensive killWorth
+												// case, so we don't exceed the bounds
+										fileConfig.getInt("PVE-RewardTier01"), fileConfig.getInt("PVE-RewardTier02"), fileConfig.getInt("PVE-RewardTier03"), fileConfig.getInt("PVE-RewardTier04"), fileConfig.getInt("PVE-RewardTier05"), fileConfig.getInt("PVE-RewardTier06"), fileConfig.getInt("PVE-RewardTier07"), fileConfig.getInt("PVE-RewardTier08"), fileConfig.getInt("PVE-RewardTier09"), fileConfig.getInt("PVE-RewardTier10"), fileConfig.getInt("PVE-RewardTier11"), fileConfig.getInt("PVE-RewardTier12"),
+										fileConfig.getInt("PVP-Reward") };
+								int max = Arrays.stream(arr).max().getAsInt();
 								ecoMax.subtract(new BigDecimal(max));
 								if (chrBal != null) {
 									if (enemy.getType() == EntityType.PLAYER) { // ==killer.getType()
