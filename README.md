@@ -1,17 +1,13 @@
-# CombatRewards
-Rewards for PVE or PVP &amp; punish upon death (+PlayerHeads)!
-
-This plugin only rewards for pvp and hostile mobs, not for neutral or friendly entities.
-
-Works great to keep players with keepInventory from voiding for free & to reward farming mobs.
-
-Customizable settings and values for each hostile mob in config file.
-
-Playerheads will drop at a 100% rate with a name, date, and time on the item tag.
+Set rewards for PVE or PVP & punishments upon death (+Player-Heads)!
 
 
+Each hostile mob now has customizable price values for their reward in the config file.
 
+This plugin rewards for pvp and hostile mobs, not for neutral or friendly entities.
 
-An economy-based plugin for bukkit / spigot / paper Minecraft servers.
+Works great to keep players with keepInventory from voiding for free and to reward farming mobs.
+With default settings, player-heads drop after PVP with their name, the date, and time on its item tag.
 
-For Minecraft v1.16 or above. Requires: Vault, EssentialsX.
+Economy-based plugin made for bukkit / spigot / paper Minecraft servers.
+
+Requires: Minecraft v1.16.x, Vault, EssentialsX.
