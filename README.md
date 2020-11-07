@@ -1,5 +1,5 @@
 # CombatRewards
-Rewards for PVE or PVP &amp; punish upon death (+PlayerHead)!
+Rewards for PVE or PVP &amp; punish upon death (+PlayerHeads)!
 
 This plugin only rewards for pvp and hostile mobs, not for neutral or friendly entities.
 
