@@ -82,7 +82,7 @@ public class KillEntityHandler implements Listener {
 						if (rew != null) {
 							if (canReward(killer, enemy)) {
 								switch (enemy.getType()) {
-								/** UN-REWARDABLE */
+								/** FRIENDLY / NO REWARD */
 								case BAT:
 								case BEE:
 								case CAT:
@@ -120,98 +120,152 @@ public class KillEntityHandler implements Listener {
 								case ZOMBIE_VILLAGER:
 								case STRIDER:
 									killable = true;
+									killWorth = 0;
 									break;
-								/** MOBS / REWARD TIERS */
+								/** HOSTILE MOBS / REWARDABLE */
 								case ENDERMITE:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Endermite");
+									break;
 								case SILVERFISH:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier01");
+									killWorth = fileConfig.getInt("PVE-Silverfish");
 									break;
 								case SPIDER:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Spider");
+									break;
 								case CAVE_SPIDER:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-CaveSpider");
+									break;
 								case ZOMBIE:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Zombie");
+									break;
 								case SKELETON:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Skeleton");
+									break;
 								case MAGMA_CUBE:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-MagmaCube");
+									break;
 								case GHAST:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier02");
+									killWorth = fileConfig.getInt("PVE-Ghast");
 									break;
 								case SLIME:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier03");
+									killWorth = fileConfig.getInt("PVE-Slime");
 									break;
 								case WITHER_SKELETON:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-WitherSkeleton");
+									break;
 								case HUSK:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Husk");
+									break;
 								case DROWNED:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Drowned");
+									break;
 								case STRAY:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier04");
+									killWorth = fileConfig.getInt("PVE-Stray");
 									break;
 								case BLAZE:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Blaze");
+									break;
 								case PILLAGER:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Pillager");
+									break;
 								case CREEPER:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier05");
+									killWorth = fileConfig.getInt("PVE-Creeper");
 									break;
 								case WITCH:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Witch");
+									break;
 								case VEX:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Vex");
+									break;
 								case PHANTOM:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier06");
+									killWorth = fileConfig.getInt("PVE-Phantom");
 									break;
 								case ENDERMAN:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Enderman");
+									break;
 								case EVOKER:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Evoker");
+									break;
 								case VINDICATOR:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Vindicator");
+									break;
 								case SHULKER:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier07");
+									killWorth = fileConfig.getInt("PVE-Shulker");
 									break;
 								case RAVAGER:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier08");
+									killWorth = fileConfig.getInt("PVE-Ravager");
 									break;
 								case GUARDIAN:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier09");
+									killWorth = fileConfig.getInt("PVE-Guardian");
 									break;
 								case ELDER_GUARDIAN:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier10");
+									killWorth = fileConfig.getInt("PVE-ElderGuardian");
 									break;
 								case WITHER:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier11");
+									killWorth = fileConfig.getInt("PVE-Wither");
 									break;
 								case ENDER_DRAGON:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier12");
+									killWorth = fileConfig.getInt("PVE-EnderDragon");
 									break;
 								// [>1.16]:
-								case HOGLIN:
-									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier07");
-									break;
 								case PIGLIN:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier05");
+									killWorth = fileConfig.getInt("PVE-Piglin");
 									break;
 								case PIGLIN_BRUTE:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier09");
+									killWorth = fileConfig.getInt("PVE-PiglinBrute");
+									break;
+								case HOGLIN:
+									killable = true;
+									killWorth = fileConfig.getInt("PVE-Hoglin");
 									break;
 								case ZOGLIN:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier08");
+									killWorth = fileConfig.getInt("PVE-Zoglin");
 									break;
 								case ZOMBIFIED_PIGLIN:
 									killable = true;
-									killWorth = fileConfig.getInt("PVE-RewardTier03");
+									killWorth = fileConfig.getInt("PVE-ZombifiedPiglin");
 									break;
 								case PLAYER:
-									killable = true;
-									killWorth = fileConfig.getInt("PVP-Reward");
+									if (fileConfig.getBoolean("PVP-RewardEnabled")) {
+										killable = true;
+										killWorth = fileConfig.getInt("PVP-Reward");
+									} else {
+										killable = true;
+										killWorth = 0;
+									}
 									break;
-								// [<1.16]: case PIG_ZOMBIE: killable = true; killWorth = 50; break;
+								// [<1.16]: case PIG_ZOMBIE: killable = true; killWorth = fileConfig.getBoolean("PVP-PigZombie"); break;
 								/** UNKNOWN / UNKILLABLE */
 								case AREA_EFFECT_CLOUD:
 								case ARMOR_STAND:
@@ -254,12 +308,12 @@ public class KillEntityHandler implements Listener {
 								case WITHER_SKULL:
 								default:
 									killable = false;
+									killWorth = 0;
 									break;
 								}
 							}
 							BigDecimal chrBal = null;
-							// @DEBUG: System.out.println("Killworth: \"" + killWorth + "\" (&& killable:
-							// \"" + killable + "\")");
+							// @DEBUG: System.out.println("Killworth: \"" + killWorth + "\" (&& killable: \"" + killable + "\")");
 							if (killable && killWorth > 0) {
 								try {
 									UUID killeruuid = killer.getUniqueId();
@@ -272,27 +326,38 @@ public class KillEntityHandler implements Listener {
 								}
 								boolean dropHead = false;
 								final BigDecimal ecoMax = new BigDecimal("9999999999999");
-								int arr[] = { // @INFO: Vault's 9999999999999 max bal value minus our most expensive killWorth
-												// case, so we don't exceed the bounds
-										fileConfig.getInt("PVE-RewardTier01"), fileConfig.getInt("PVE-RewardTier02"), fileConfig.getInt("PVE-RewardTier03"), fileConfig.getInt("PVE-RewardTier04"), fileConfig.getInt("PVE-RewardTier05"), fileConfig.getInt("PVE-RewardTier06"), fileConfig.getInt("PVE-RewardTier07"), fileConfig.getInt("PVE-RewardTier08"), fileConfig.getInt("PVE-RewardTier09"), fileConfig.getInt("PVE-RewardTier10"), fileConfig.getInt("PVE-RewardTier11"), fileConfig.getInt("PVE-RewardTier12"),
-										fileConfig.getInt("PVP-Reward") };
+								int arr[] = {
+								// @INFO: Vault's 9999999999999 max bal value minus our most expensive killWorth case, so we don't exceed the bounds
+										fileConfig.getInt("PVE-Blaze"), fileConfig.getInt("PVE-CaveSpider"),
+										fileConfig.getInt("PVE-Creeper"), fileConfig.getInt("PVE-Drowned"),
+										fileConfig.getInt("PVE-ElderGuardian"), fileConfig.getInt("PVE-EnderDragon"),
+										fileConfig.getInt("PVE-Enderman"), fileConfig.getInt("PVE-Endermite"),
+										fileConfig.getInt("PVE-Evoker"), fileConfig.getInt("PVE-Ghast"),
+										fileConfig.getInt("PVE-Guardian"), fileConfig.getInt("PVE-Husk"),
+										fileConfig.getInt("PVE-MagmaCube"), fileConfig.getInt("PVE-Phantom"),
+										fileConfig.getInt("PVE-Pillager"), fileConfig.getInt("PVE-Ravager"),
+										fileConfig.getInt("PVE-Shulker"), fileConfig.getInt("PVE-Silverfish"),
+										fileConfig.getInt("PVE-Skeleton"), fileConfig.getInt("PVE-Slime"),
+										fileConfig.getInt("PVE-Spider"), fileConfig.getInt("PVE-Stray"),
+										fileConfig.getInt("PVE-Vex"), fileConfig.getInt("PVE-Vindicator"),
+										fileConfig.getInt("PVE-Witch"), fileConfig.getInt("PVE-WitherSkeleton"),
+										fileConfig.getInt("PVE-Zombie"), fileConfig.getInt("Wither"),
+										fileConfig.getInt("PVP-Reward")
+								};
 								int max = Arrays.stream(arr).max().getAsInt();
 								ecoMax.subtract(new BigDecimal(max));
 								if (chrBal != null) {
-									if (enemy.getType() == EntityType.PLAYER) { // ==killer.getType()
+									if (enemy.getType() == EntityType.PLAYER) {
 										final Location loc = killed.getLocation();
 										// final String chrName = d.getEntity().getName();
 										final UUID uuid = killed.getUniqueId();
-										/** Drop killed skull: */
 										final World w = killed.getWorld();
 										final ItemStack playerHead = new ItemStack(Material.PLAYER_HEAD);
-										// playerList.forEach(uuid -> {
-										if (fileConfig.getBoolean("PVP-DropHead", true)) {
+										if (fileConfig.getBoolean("PVP-DropPlayerHead", true)) {
 											if (loc != null && w != null && playerHead != null) {
 												SkullMeta playerHeadMeta = (SkullMeta) playerHead.getItemMeta();
 												if (!killed.isOnline()) {
 													final OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
-													// log if the player has played before?
 													// this.getLogger().info(offlinePlayer.hasPlayedBefore());
 													playerHeadMeta.setOwningPlayer(offlinePlayer);
 													playerHeadMeta.setDisplayName(offlinePlayer.getName() + "'s skull");
@@ -304,9 +369,9 @@ public class KillEntityHandler implements Listener {
 													dropHead = true;
 												}
 												if (dropHead) {
-													final SimpleDateFormat formatUTC = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
+													final SimpleDateFormat formatUTC = new SimpleDateFormat("yy-MMM-dd HH:mm");
 													formatUTC.setTimeZone(TimeZone.getTimeZone("UTC"));
-													final SimpleDateFormat dateFormatLocal = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
+													final SimpleDateFormat dateFormatLocal = new SimpleDateFormat("yy-MMM-dd HH:mm");
 													try {
 														if (dateFormatLocal != null) {
 															playerHeadMeta.setLore(Collections.singletonList(ChatColor.GOLD + "" + ChatColor.BOLD + dateFormatLocal.parse(formatUTC.format(new Date()))));

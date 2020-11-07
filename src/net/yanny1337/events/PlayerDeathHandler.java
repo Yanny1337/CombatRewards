@@ -59,7 +59,7 @@ public class PlayerDeathHandler implements Listener {
 
 		if (d.getEntity() == null || d.getEntity().getKiller() == null || d.getEntity().getKiller().getType() == null) {
 			// if (d.getEntity().getKiller().getType() != EntityType.PLAYER) {
-			if (fileConfig.getBoolean("PVP-DeathCostOnlyInPVP")) {
+			if (fileConfig.getBoolean("PVP-CostOnlyInPVP")) {
 				costRegular = 0;
 				costReduced = 0;
 				return;

@@ -39,10 +39,16 @@ public class CombatRewards extends JavaPlugin {
 		} catch (Exception e) {
 			this.getLogger().info("[CombatRewards] Invalid configuration, please reset/remove the configuration file!");
 			e.printStackTrace();
+			return;
 		}
 		try {
-			getServer().getPluginManager().registerEvents(new PlayerDeathHandler(this, config), this);
-			getServer().getPluginManager().registerEvents(new KillEntityHandler(this, config), this);
+			if (config.getInt("PVP-DeathCostRegular") <= config.getInt("PVP-Reward") || config.getInt("PVP-DeathCostReduced") <= config.getInt("PVP-Reward")) {
+				getServer().getPluginManager().registerEvents(new PlayerDeathHandler(this, config), this);
+				getServer().getPluginManager().registerEvents(new KillEntityHandler(this, config), this);
+			} else {
+				this.getLogger().info("[CombatRewards] The DeathCost(Regular/Reduced) punishments must exceed the PVP-Reward value");
+				return;
+			}
 		} catch (Exception e) {
 			this.getLogger().info("[CombatRewards] Something went wrong, therefore the plugin will not be started!");
 			e.printStackTrace();
